@@ -1,0 +1,21 @@
+body {
+    
+}
+
+h1 {
+    color: #6261e3;
+}
+
+p {
+    color: rgb(163, 163, 163)
+}
+
+.center_text {
+    text-align: center;
+}
+
+.card_with_question {
+    background-color: #ebecff;
+    color: black;
+    text-align: center;
+}
