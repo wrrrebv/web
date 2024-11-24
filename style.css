@@ -1,5 +1,5 @@
 body {
-    
+    font-family:'Gill Sans', sans-serif;
 }
 
 h1 {
@@ -7,7 +7,7 @@ h1 {
 }
 
 p {
-    color: rgb(163, 163, 163)
+    color: grey
 }
 
 .center_text {
@@ -17,5 +17,15 @@ p {
 .card_with_question {
     background-color: #ebecff;
     color: black;
-    text-align: center;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    margin: 3px;
+    border-radius: 13px;
+    font-size: 14px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
 }
