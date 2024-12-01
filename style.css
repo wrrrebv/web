@@ -29,3 +29,29 @@ p {
     display: flex;
     justify-content: center;
 }
+
+.smart-search-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.smart-search-text {
+    display: flex;
+    justify-content: center;
+}
+
+.search-button-block {
+    display: flex;
+    justify-content: center;
+}
+
+.search-button {
+    border: none;
+    border-radius: 13px;
+    padding: 9px;
+}
+
+.search-button:hover {
+    background-color: #acacac;
+}
