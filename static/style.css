@@ -1,0 +1,144 @@
+body {
+    font-family:'Gill Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: transparent;
+    font-size: 50px;
+    background-image: linear-gradient(0deg, #6261e3, #b74ff7);
+    background-clip: text;
+    margin-top:20px
+}
+
+p {
+    color: grey
+}
+
+.header {
+    width: 80%;
+    margin: 0, auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center_text {
+    text-align: center;
+}
+
+
+.card_with_question {
+    border: none;
+    background-color: #ebecff;
+    color: black;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    margin: 3px;
+    border-radius: 13px;
+    font-size: 14px;
+}
+
+.card_with_question:hover {
+    background-color: #caccf8;
+    cursor: pointer;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.smart-search-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.smart-search-text {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 10px;
+    margin-left: 4px;
+}
+
+.search-button-block {
+    display: flex;
+    justify-content: center;
+}
+
+.search-button {
+    border: none;
+    border-radius: 13px;
+    padding: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-button:hover {
+    background-color: #acacac;
+    cursor: pointer;
+}
+
+.search-button-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+}
+
+.ruwiki-icon {
+    width: 150px;
+    height: auto;
+}
+
+.button-login {
+    color: #5e2ec8;
+    border: None;
+    border-radius: 15px;
+    padding: 6px 15px;
+    cursor: pointer;
+}
+
+.button-login:active {
+    color: #faa700
+}
+
+.button-change-font {
+    color: #1e1e1e;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.header_menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+
+.search-field {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#search-text {
+    border: 1px solid #d6d9ff;
+    height: 64px;
+    border-radius: 20px;
+    font-size: 16px;
+    text-indent: 5px;
+}

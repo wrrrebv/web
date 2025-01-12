@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Рувики</title>    
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body>
+        <div class="header">
+            <div class="header_menu">
+                <a href="https://ru.ruwiki.ru/wiki/Заглавная_страница">
+                <img class="ruwiki-icon" src="../static/logo_ruwiki.svg" alt = "Логотип Рувики">
+                </a>
+                <div class="header_buttons">
+                    <button class="button-login">Войти</button>
+
+                    <button class = "button-change-font">Aa</button>
+                </div>
+            </div>
+            <div class="center_text">
+                <img src="../static/logo.svg" alt="лого РУВИКИ" />
+                <h1>
+                    Ищите по-новому
+                </h1>
+                <p>
+                    Спрашивайте то, что хотите найти в РУВИКИ.
+                    <br />
+                    Умный поиск поможет!
+                </p>
+            </div>
+            
+            <div class="search-field">
+                <input type="text" id="search-text" size="72" placeholder="Найти ответ на вопрос">
+            </div>
+
+            <div class="smart-search-block">
+                <div class="smart-search-text">Умный поиск поможет разобраться</div>
+    
+                <div class="cards">
+                    <button class="card_with_question" onclick="alert('Привет!')">
+                        Почему электромобили массово появились только сейчас?
+                    </button>
+                    <button class="card_with_question">
+                        Какие открытия привели к развитию современных технологий?
+                    </button>
+                    <button class="card_with_question">
+                        Чем отличаются высотки в Москве от небоскрёбов Нью Йорка?
+                    </button>
+                </div>
+    
+                <div class="search-button-block">
+                    <button class="search-button">
+                        <img
+                            src="../static/seach_icon.svg"
+                            alt="иконка поиска"
+                            class="search-button-icon"
+                        >
+                        Поиск без нейросети
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

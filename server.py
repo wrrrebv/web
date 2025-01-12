@@ -13,6 +13,10 @@ def ruwiki():
 def hello():
     return "Привет, мир!"
     
+@app.route('/sonic')
+def sonic_article():
+    return render_template('sonic_article.html')
+
 @app.route("/max")
 def find_max():
     a = int(request.args["a"])
