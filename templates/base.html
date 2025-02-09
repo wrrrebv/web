@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="shortcut icon" href="../static/logo.svg" />
+    <link rel="stylesheet" href="../static/base.css">
+    {% block styles %}{% endblock styles %}
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="header_menu">
+            <a href="#"><img class="ruwiki-icon" src="../static/logo_ruwiki.svg" alt="Лого Рувики"></a>
+
+            <div class="header-buttons">
+                <button class="button-login">Войти</button>
+                <button class="button-change-font">Аа</button>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}{% endblock content %}
+
+</body>
+
+</html>
