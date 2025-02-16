@@ -21,6 +21,8 @@ p{
     margin: 20px;
     width: 1000px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .article_icon{
@@ -51,4 +53,17 @@ p{
     flex-direction: row ;
     margin-bottom: 40px;
     
+}
+
+.article_image{
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.article_image_name {
+    margin: 30px;
 }
