@@ -4,13 +4,13 @@
     <head>
         <meta charset="utf-8">
         <title>Рувики</title>    
-        <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <div class="header">
             <div class="header_menu">
                 <a href="https://ru.ruwiki.ru/wiki/Заглавная_страница">
-                <img class="ruwiki-icon" src="../static/logo_ruwiki.svg" alt = "Логотип Рувики">
+                <img class="ruwiki-icon" src="{{ url_for('static', filename='logo_ruwiki.svg') }}" alt = "Логотип Рувики">
                 </a>
                 <div class="header_buttons">
                     <button class="button-login">Войти</button>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="center_text">
-                <img src="../static/logo.svg" alt="лого РУВИКИ" />
+                <img src="{{ url_for('static', filename='logo.svg') }}" alt="лого РУВИКИ" />
                 <h1>
                     Ищите по-новому
                 </h1>
@@ -52,7 +52,7 @@
                 <div class="search-button-block">
                     <button class="search-button">
                         <img
-                            src="../static/seach_icon.svg"
+                            src="{{ url_for('static', filename='icon.svg') }}"
                             alt="иконка поиска"
                             class="search-button-icon"
                         >

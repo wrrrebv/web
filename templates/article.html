@@ -3,9 +3,7 @@
 {% block title %}{{ title_article }}{% endblock title %}
 
 {% block styles %}
-<link rel="shortcut icon" href="../static/ruwiki_head.jpg" />
-<link rel="stylesheet" href="../static/base.css">
-<link rel="stylesheet" href="../static/article.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='article.css') }}">
 {% endblock styles %}
 
 {% block content %}
@@ -17,11 +15,11 @@
 
         <div class="article_btns">
             <button class="article_btn">
-                <img src="../static/translate.png" class="article_icon">
+                <img src="{{ url_for('static', filename='translate.png') }}" class="article_icon">
             </button>
-            <button class="article_btn"><img src="../static/share.png" class="article_icon"></button>
+            <button class="article_btn"><img src="{{ url_for('static', filename='share.png') }}" class="article_icon"></button>
             <button class="article_btn">
-                <img src="../static/headphones.png" class="article_icon">
+                <img src="{{ url_for('static', filename='headphones.png') }}" class="article_icon">
                 Послушать</button>
         </div>
 
@@ -33,7 +31,7 @@
     
     <div class="article_image">
         <h4 class="article_image_name">{{ article_image_title }}</h4>
-        <img src="{{ article_image_path }}" alt-="{{ title_article }}">
+        <img src="{{ url_for('static', filename=article_image_path) }}" alt-="{{ title_article }}">
     </div>
 </div>
 
