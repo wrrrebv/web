@@ -1,7 +1,9 @@
-h1{
+
+h1 {
     color: black;
     font-size: 50px;
     margin-top: 16px;
+    margin-bottom: 40px;
 }
 
 p{
@@ -21,6 +23,7 @@ p{
     margin: 20px;
     width: 1000px;
     border-radius: 20px;
+
     display: flex;
     flex-direction: row;
 }
@@ -52,8 +55,8 @@ p{
     display: flex;
     flex-direction: row ;
     margin-bottom: 40px;
-    
 }
+
 
 .article_image{
     padding-left: 40px;
@@ -64,6 +67,6 @@ p{
     flex-direction: column;
 }
 
-.article_image_name {
-    margin: 30px;
+.article_image_name{
+    margin: 20px;
 }

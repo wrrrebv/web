@@ -3,23 +3,26 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Рувики</title>    
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>РУВИКИ — новая российская интернет-энциклопедия</title>
+        <link rel="shortcut icon" href="../static/images/ruwiki_head.jpg" />
+        <link rel="stylesheet" href="../static/styles.css" >
+        <link rel="stylesheet" href="{{ url_for('static', filename='articles.css') }}">
     </head>
     <body>
         <div class="header">
             <div class="header_menu">
-                <a href="https://ru.ruwiki.ru/wiki/Заглавная_страница">
-                <img class="ruwiki-icon" src="{{ url_for('static', filename='logo_ruwiki.svg') }}" alt = "Логотип Рувики">
-                </a>
-                <div class="header_buttons">
-                    <button class="button-login">Войти</button>
+                <a href="#"><img class="ruwiki-icon" src="../static/images/рувики_лого.svg" alt="Лого Рувики"></a>
 
-                    <button class = "button-change-font">Aa</button>
+                <div class="header-buttons">
+                    <a href="{{ url_for('add_article') }}" class="button-create-article">Создать статью</a>
+                    <button class="button-login">Войти</button>
+                    <button class="button-change-font">Аа</button>
                 </div>
             </div>
+
+
             <div class="center_text">
-                <img src="{{ url_for('static', filename='logo.svg') }}" alt="лого РУВИКИ" />
+                <img src="../static/images/logo.svg" alt="Лого РУВИКИ" />
                 <h1>
                     Ищите по-новому
                 </h1>
@@ -29,37 +32,51 @@
                     Умный поиск поможет!
                 </p>
             </div>
-            
             <div class="search-field">
                 <input type="text" id="search-text" size="72" placeholder="Найти ответ на вопрос">
             </div>
 
-            <div class="smart-search-block">
-                <div class="smart-search-text">Умный поиск поможет разобраться</div>
-    
-                <div class="cards">
-                    <button class="card_with_question" onclick="alert('Привет!')">
-                        Почему электромобили массово появились только сейчас?
-                    </button>
-                    <button class="card_with_question">
-                        Какие открытия привели к развитию современных технологий?
-                    </button>
-                    <button class="card_with_question">
-                        Чем отличаются высотки в Москве от небоскрёбов Нью Йорка?
-                    </button>
-                </div>
-    
-                <div class="search-button-block">
-                    <button class="search-button">
-                        <img
-                            src="{{ url_for('static', filename='icon.svg') }}"
-                            alt="иконка поиска"
-                            class="search-button-icon"
-                        >
-                        Поиск без нейросети
-                    </button>
-                </div>
+            <div class = 'smart-search-block'>
+            <div class="smart-search-text">Умный поиск поможет разобраться</div>
+            <div class="cards">
+                <button class="cars_with_background" onclick="alert(1)">
+                    Почему электромобили массово появились только сейчас?
+                </button>
+                <button class="cars_with_background">
+                    Почему электромобили массово появились только сейчас?
+                </button>
+                <button class="cars_with_background">
+                    Почему электромобили массово появились только сейчас?
+                </button>
+            </div>
+
+            <div class="search-button-block">
+                <button class="search-button">
+                    <img src="../static/images/logo2.svg" alt="иконка поиска" style="width: 12px; height: 12px; margin-right: 4px ;">
+                    Поиск без нейросети
+                </button>
+            </div>
+
             </div>
         </div>
+
+        <div class="articles_section">
+            <h2 class="article">Список статей</h2>
+            <div class="article_table">
+                {% for group in groups %}
+                <div class="article_table_row">
+                    {% for article in group %}
+                    <div class="article_card">
+                        <a href="{{ url_for('article', name=article.title) }}">
+                            <h3>{{ article.title }}</h3>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
     </body>
+
 </html>
