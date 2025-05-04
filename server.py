@@ -5,7 +5,8 @@ from flask import (
     redirect,
     url_for,
     flash,
-    send_from_directory
+    send_from_directory,
+    abort
 )
 from article import Article
 import os
@@ -46,7 +47,14 @@ def uploaded_photo(filename):
         filename
     )
 
- 
+@app.route('/delete_article/<int:id>', methods=['POST'])
+def delete_article(id):
+    deleted = Database.delete_article_by_id(id)
+    if not deleted:
+        abort(404, f"Article with id '{id}' doesn't exist")
+    return redirect(url_for('index'))
+
+
 @app.route('/add_article', methods=['GET', 'POST'])
 def add_article():
     if request.method == 'GET':

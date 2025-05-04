@@ -7,10 +7,26 @@
 {% endblock styles %}
 
 {% block content %}
+<div class="controls_wrapper">  
+    <div class="controls">
+        <button class="controls_btn">Править</button>
+        <form action="{{ url_for('delete_article', id=article.id) }}" method="POST">
+            <button 
+                type="submit" 
+                class="controls_btn"
+                onclick="return confirm('Вы уверены, что хотите удалить статью?')"
+            >
+                Удалить
+            </button>
+        </form>
+    </div>
+</div>
+
+
 <div class="article">
     <div class="article_text">
         <div>
-            <h1>{{ title_article }}</h1>
+            <h1>{{ article.title }}</h1>
         </div>
 
         <div class="article_btns">
@@ -24,15 +40,15 @@
         </div>
 
         <div>
-            {{text_article}}
+            {{article.content}}
         </div>
 
     </div>
 
     <div class="article_image">
-        <h3 class="article_image_name">{{article_image_title}}</h3>
+        <h3 class="article_image_name">{{article.title}}</h3>
 
-        <img src="{{ url_for('static', filename=article_image_path) }}" alt="{{title_article}}">
+        <img src="{{ url_for('uploaded_photo', filename=article.photo) }}" alt="{{article.title}}">
     </div>
 </div>
 {% endblock content %}

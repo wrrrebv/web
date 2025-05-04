@@ -23,6 +23,23 @@ class Database:
         connection.commit()
 
     @staticmethod
+    def select(sql,params=()):
+        connection = sqlite3.connect(Database.DATABASE)
+       
+        cursor = connection.cursor()
+
+        cursor.execute(sql, params)
+        
+        raw_articles = cursor.fetchall()
+        articles = []
+        for id, title, content, photo in raw_articles:
+            article = Article(title, content, photo, id)
+            articles.append(article)
+
+        return articles
+
+
+    @staticmethod
     def create_table():
         with open(Database.SCHEMA) as schema_file:
             Database.execute(schema_file.read())
@@ -37,6 +54,25 @@ class Database:
             [article.title, article.content, article.photo]
         )
         return True
+    
+    @staticmethod
+    def find_article_by_id(id):
+        articles = Database.select("SELECT * FROM articles WHERE id = ?", [id])
+
+        if not articles: 
+            return None
+        
+        return articles[0]
+    
+    @staticmethod
+    def delete_article_by_id(id):
+        article = Database.find_article_by_id(id)
+        if article is None:
+            return False
+        
+        Database.execute("DELETE FROM articles WHERE id = ?", [id])
+        return True
+
 
     @staticmethod
     def find_article_by_title(title):
