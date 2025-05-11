@@ -9,7 +9,10 @@
 {% block content %}
 <div class="controls_wrapper">  
     <div class="controls">
-        <button class="controls_btn">Править</button>
+        <form action="{{ url_for('edit_article', id=article.id) }}" method="GET">
+            <button type="submit" class="controls_btn">Править</button>
+        </form>
+
         <form action="{{ url_for('delete_article', id=article.id) }}" method="POST">
             <button 
                 type="submit" 

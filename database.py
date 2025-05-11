@@ -73,6 +73,19 @@ class Database:
         Database.execute("DELETE FROM articles WHERE id = ?", [id])
         return True
 
+    @staticmethod
+    def update_article(id, title, content, photo):
+        article = Database.find_article_by_id(id)
+        if article is None:
+            return False
+        
+        Database.execute("""
+        UPDATE articles
+        SET title = ?, content = ?, photo = ?
+        WHERE id = ?
+        """,
+        [title, content, photo, id])
+        return True
 
     @staticmethod
     def find_article_by_title(title):
