@@ -14,10 +14,40 @@ from database import Database
 
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "jlk1235352"
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 Database.create_table()
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "GET":
+        return render_template("register.html")
+    
+    user_email = request.form.get("user_email")
+    user_phone = request.form.get("user_phone")
+    user_password = request.form.get("user_password")
+    user_password_repeat = request.form.get("user_password_repeat")
+
+    if not user_email:
+        flash("электронная почта не может быть пустой!")
+        return redirect(request.url)
+    
+    if not user_phone:
+        flash("номер телефона не может быть пустым!")
+        return redirect(request.url)
+    
+    if not user_password:
+        flash("пароль не может быть пустым!")
+        return redirect(request.url)
+    
+    if not user_password_repeat or user_password != user_password_repeat:
+        flash("пароли не совпадают!")
+        return redirect(request.url)
+
+    return redirect(url_for("index"))
+    
 
 @app.route("/")
 @app.route("/index")
