@@ -2,7 +2,7 @@ import sqlite3
 import hashlib
 
 
-from article import Article
+from article import Article, User
 
 
 class Database:
@@ -32,7 +32,10 @@ class Database:
 
         cursor.execute(sql, params)
         
-        raw_articles = cursor.fetchall()
+        return cursor.fetchall()
+        
+    @staticmethod
+    def convert_to_articles(raw_articles):
         articles = []
         for id, title, content, photo in raw_articles:
             article = Article(title, content, photo, id)
@@ -40,11 +43,14 @@ class Database:
 
         return articles
 
-
     @staticmethod
     def create_table():
         with open(Database.SCHEMA) as schema_file:
-            Database.execute(schema_file.read())
+            connection = sqlite3.connect(Database.DATABASE)
+            cursor = connection.cursor()
+            cursor.executescript(schema_file.read())
+            connection.commit()
+            connection.close()
 
     @staticmethod
     def save(article: Article):
@@ -59,8 +65,10 @@ class Database:
     
     @staticmethod
     def find_article_by_id(id):
-        articles = Database.select("SELECT * FROM articles WHERE id = ?", [id])
 
+        articles = Database.convert_to_articles(
+            Database.select("SELECT * FROM articles WHERE id = ?", [id])
+        )
         if not articles: 
             return None
         
@@ -130,7 +138,8 @@ class Database:
             articles.append(article)
 
         return articles
-    
+
+
     @staticmethod
     def register_user(email, phone, password):
         password_hash = hashlib.md5(password.encode()).hexdigest()
@@ -139,8 +148,32 @@ class Database:
             [email, phone, password_hash]
         )
 
+    @staticmethod
+    def can_be_logged_in(email_or_phone, password):
+        user = Database.find_user_by_email_or_phone(email_or_phone)
+        if user is None:
+            return False
+
+        password_hash = hashlib.md5(password.encode()).hexdigest()
+        real_password_hash = Database.select(
+            "SELECT * FROM users WHERE email = ? OR phone = ?",
+            [email_or_phone, email_or_phone]
+        )[0][3]
+
+        if password_hash != real_password_hash:
+            return False
+        
+        return True
+
+    @staticmethod
     def find_user_by_email_or_phone(email_or_phone):
-        Database.execute(
+        users = Database.select(
             "SELECT * FROM users WHERE email = ? OR phone = ?",
             [email_or_phone, email_or_phone]
         )
+
+        if not users:
+            return None
+        
+        id, email, phone, password_hash = users[0]
+        return User(email=email, phone=phone, id=id)
